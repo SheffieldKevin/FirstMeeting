@@ -1,8 +1,8 @@
 //: ## 1 @SheffieldSwift 19 May 2015
-//: ### Swift is an interesting new language with some interesting features.
+//: ### Swift is an powerful new language with some interesting features.
 //: I'll be discussing a few of those today
 //: * Mutability versus immutability
-//: * Difference between Class and Struct instances and why that is important
+//: * Difference between Class, Struct and enum instances and why that is important
 //: * Optionals
 //: * Functions are first class objects in Swift
 //: * Enums and associative values
@@ -46,7 +46,7 @@ println(newString)
 
 //: A variable or a constant does not have to have an initial value as long as the variable is assigned a value before it is accessed. In this case though the decleration requires the type to be specified. The compiler will not attempt to look ahead to infer the type from later information.
 
-// let theString
+// let anotherString
 let theString:String
 
 if str == "Hello, playground" {
@@ -57,7 +57,7 @@ else {
 }
 
 println(theString)
-//: #### Difference between Struct and Object instances.
+//: ### Difference between Struct and Object instances.
 
 class Person {
     var firstName = ""
@@ -73,14 +73,14 @@ class Person {
     }
 }
 
-let someone = Person(firstName: "Bluey")
+let someone = Person(firstName: "Shayleen")
 
 //: So what happens when we try to change the person's name:
-someone.firstName = "John"
+someone.firstName = "Katerina"
 // someone.lastName = "SemiSerious"
 someone.printName()
 
-//: ##### Hey!. someone has been declared as a constant but we change someone's name.
+//: ##### Hey! someone has been declared as a constant but we can change their name.
 
 struct City {
     var name = ""
@@ -99,9 +99,24 @@ struct City {
 }
 
 let myCity = City(cityName: "Sheffield", population: 525000)
-// myCity.name = "Chestrerfield"
+// myCity.name = "Chesterfield"
 
 myCity.printCity()
 
-//: So what is going on here. The difference is the difference in how Swift treats Struct or Class objects.
+//: So what is going on here. The difference is how Swift treats Struct or Class instances. Instances of structs are passed by value, whereas instances of classes are passed by reference. Struct instances are passed by value, whereas class instances are passed by reference.
+
+//: ##### What do we mean by this:
+//: When you assign a struct instance to another property the instance is copied. If the property is declared with a let then the value itself is constant. Whereas if you assign a class instance to a let property then what you are assigning is the reference to the class instance, not the class instance itself. What is constant is the reference to the instance, that reference can't refer to a different class instance. When declaring a new type deciding on whether that type should be a struct or class type is important.
+
+//: Enum types behave like struct types. Instances of enum types are passed by value.
+
+//: You can't have sub structs or sub classes of a struct.
+
+// class BigCity: City { }
+
+//: The word 'instance' is a more general term used to refer to objects of classes or structs.
+
+//: ### Optionals - An important & painful at first Swift feature
+//: If a property can't be assigned when declared or initialized with an undefined value then its value will be either undefined or nil. Swift formalizes what will happen with optionals.
+
 
