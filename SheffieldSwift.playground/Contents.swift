@@ -106,7 +106,7 @@ myCity.printCity()
 //: So what is going on here. The difference is how Swift treats Struct or Class instances. Instances of structs are passed by value, whereas instances of classes are passed by reference. Struct instances are passed by value, whereas class instances are passed by reference.
 
 //: ##### What do we mean by this:
-//: When you assign a struct instance to another property the instance is copied. If the property is declared with a let then the value itself is constant. Whereas if you assign a class instance to a let property then what you are assigning is the reference to the class instance, not the class instance itself. What is constant is the reference to the instance, that reference can't refer to a different class instance. When declaring a new type deciding on whether that type should be a struct or class type is important.
+//: When you assign a struct instance to another property the instance is copied. If the property is declared with a let then the value itself is constant. Whereas if you assign a class instance to a let property then what you are assigning is the reference to the class instance, not the class instance itself. What is constant is the reference to the instance, that reference can't refer to a different class instance. When declaring a new type deciding on whether that type should be a struct or class type is important. [Copy a class instance](http://t.co/KN34IMcqxj)
 
 //: Enum types behave like struct types. Instances of enum types are passed by value.
 
