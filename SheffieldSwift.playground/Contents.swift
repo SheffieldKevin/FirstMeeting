@@ -104,7 +104,7 @@ let myCity = City(cityName: "Sheffield", population: 525000)
 
 myCity.printCity()
 
-//: So what is going on here. The difference is how Swift treats Struct or Class instances. Instances of structs are passed by value, whereas instances of classes are passed by reference. Struct instances are passed by value, whereas class instances are passed by reference.
+//: So what is going on here. The difference is how Swift treats Struct or Class instances. Instances of structs are passed by value, whereas instances of classes are passed by reference.
 
 //: ##### What do we mean by this:
 //: When you assign a struct instance to another property the instance is copied. If the property is declared with a let then the value itself is constant. Whereas if you assign a class instance to a let property then what you are assigning is the reference to the class instance, not the class instance itself. What is constant is the reference to the instance, that reference can't refer to a different class instance. When declaring a new type deciding on whether that type should be a struct or class type is important. [Copy a class instance](http://t.co/KN34IMcqxj)
@@ -115,7 +115,7 @@ myCity.printCity()
 
 // class BigCity: City { }
 
-//: The word 'instance' is a more general term used to refer to objects of classes or structs.
+//: The word 'instance' is a more general term used to refer to objects of classes or structs. What in 'C' would be considered to be a primitive type like integer or float in Swift has as their equivalent Int/Float which are types that are Structs and that you can call functions on. In this sense Swift is similar to Ruby. Not the same but similar.
 
 //: ### Optionals - An important feature of Swift but initially painful
 //: If a property can't be assigned when declared then its value will be either undefined or nil. Some APIs return an Optional value, in Objective-C this implies that the API could return nil. Swift formalizes how what are nil values in Objective-C are treated.
@@ -169,7 +169,7 @@ optionalString = .None
 
 //: You can also assign using the Optional .Some value.
 
-optionalString = Optional.Some("An even new string")
+optionalString = Optional.Some("An even newer string")
 
 //: You wouldn't normally do this but it demonstrates what an optional really is.
 
@@ -206,7 +206,7 @@ var hello2:WellHello? = Optional.None
 
 println("Do we get here? - we shouldn't if the above line is uncommented as it causes a crash")
 
-hello2 = WellHello(name: "Louie", message: "It is nice to see you back here where you belong")
+hello2 = WellHello(name: "Louis", message: "It is nice to see you back here where you belong")
 
 //: Even though the following force unwraps the name property because hello2 is optionally unwrapped theName remains an optional.
 let theName = hello2?.name!
@@ -256,9 +256,9 @@ greetingsFromUK!.printMessageFrom()
 //: ## What next
 //: There are a few more fundamental Swift topics which I'd like to cover but this is enough for today.
 //: * Functions as first class objects in Swift
-//: * Enums and associative values
+//: * Enums and associated values
 //:   * Pattern matching on the enum and associated values (switch statements)
 //:   * The Result type
-
+//: ## @SheffieldSwift thanks you
 //: ![Sheffield Swift](Swift.png)
 
