@@ -1,5 +1,6 @@
 //: ![Sheffield Swift](Swift.png)
 //: ## @SheffieldSwift 19 May 2015
+//: [https://github.com/SheffieldSwift/FirstMeeting](https://github.com/SheffieldSwift/FirstMeeting)
 //: ### Swift is a powerful new language with some interesting features.
 //: I'll be discussing a few of those today
 //: * Swift is strictly typed with type inference
