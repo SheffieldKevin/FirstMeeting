@@ -1,6 +1,6 @@
 //: ![Sheffield Swift](Swift.png)
-//: ## @SheffieldSwift 19 May 2015
-//: [https://github.com/SheffieldSwift/FirstMeeting](https://github.com/SheffieldSwift/FirstMeeting)
+//: ## Written for @SheffieldSwift 19 May 2015
+//: [This playground intro to Swift at GitHub](https://github.com/SheffieldSwift/Materials/tree/master/19.05.15)
 //: ### Swift is a powerful new language with some interesting features.
 //: I'll be discussing a few of those today
 //: * Swift is strictly typed with type inference
@@ -21,17 +21,17 @@ str = "@SheffieldSwift says hello back"
 //: #### So what is going on here?
 //: Swift is stricly typed so the compiler gives every variable or constant a specific type, the type cannot be changed after the variable is declared. This is different to ruby where a variable can be reassigned to an object of any type. If a type isn't specified but the type can be inferred from the assigned value when the variable or constant is declared then the compiler gives the variable or constant a type. If the type cannot be inferred the compiler will emit an error message.
 //: So the type of str is determined by the compiler at the point of decleration at compile time and is determined to be a string. I use the dynamicType property of a class or struct instance to inform us what the type is.
-println("str type is: \(str.dynamicType)")
+print("str type is: \(str.dynamicType)")
 
 //: #### We can specify the type in the decleration
 let newString:String = "Hello lovely people"
 
 //: #### The types of str and newString are the same
-println("newString type is: \(newString.dynamicType)")
+print("newString type is: \(newString.dynamicType)")
 
 //: #### Type inference works for any type the compiler can reasonably determine at compile time.
 let myNum = 2
-println("\(myNum.dynamicType)")
+print("\(myNum.dynamicType)")
 
 //: We can modify str
 let c = str.removeAtIndex(str.startIndex)
@@ -40,7 +40,7 @@ str.append(c)
 //: but can we modify newString
 
 // newString.append(c)
-println(newString)
+print(newString)
 
 //: So newString is a constant. newString is also a struct instance, not an object instance and I'll explain about why that is important later on.
 
@@ -55,7 +55,7 @@ else {
     theString = "Help me"
 }
 
-println(theString)
+print(theString)
 
 //: ##### I would recommend that you always prefer let over var.
 
@@ -71,7 +71,7 @@ class Person {
     }
     
     func printName() {
-        println("\(firstName) \(lastName)")
+        print("\(firstName) \(lastName)")
     }
 }
 
@@ -88,22 +88,25 @@ struct City {
     var name = ""
     let country:String
     var population:Int
-    
+
     init(cityName:String, country:String = "UK", population:Int) {
         name = cityName
         self.country = country
         self.population = population
     }
-    
+
     func printCity() {
-        println("City: \(name) in \(country) has population: \(population)")
+        print("City: \(name) in \(country) has population: \(population)")
     }
 }
 
-let myCity = City(cityName: "Sheffield", population: 525000)
+let myCity = City(cityName:"Sheffield", population: 525000)
+// var myCity = City(name: "Sheffield", country:"UK", population: 525000)
 // myCity.name = "Chesterfield"
 
 myCity.printCity()
+
+let anotherValueOfSheffield = myCity
 
 //: So what is going on here. The difference is how Swift treats Struct or Class instances. Instances of structs are passed by value, whereas instances of classes are passed by reference.
 
@@ -127,22 +130,23 @@ myCity.printCity()
 var optionalString:String? = "a string"
 
 let optionalString2:String?
-println(optionalString2.dynamicType)
+print(optionalString2.dynamicType)
 
 //: Optional.None is different to undefined. If you have not set a property prior to it being accessed it is not by default set to Optional.None. Instead the compiler reports an error.
-// println("\(optionalString2)")
+// print("\(optionalString2)")
 
 let optionalString3:String? = nil
-println(optionalString3)
-println(optionalString3.dynamicType)
+print(optionalString3)
+print(optionalString3.dynamicType)
 
-let optionalString4:String? = .None
-println(optionalString3)
-println(optionalString3.dynamicType)
+let optionalString4:String? = Optional.None
+print(optionalString3)
+print(optionalString3.dynamicType)
 
 //: You can unwrap the optional to access its value using ```if let``` like so:
+print(optionalString)
 if let aString = optionalString {
-    println(aString)
+    print(aString)
 }
 
 //: After an optional value has been assigned a value you can set it back to nil.
@@ -150,10 +154,10 @@ if let aString = optionalString {
 optionalString = nil
 
 if let aString = optionalString {
-    println(aString)
+    print(aString)
 }
 else {
-    println("optionalString is nil")
+    print("optionalString is nil")
 }
 
 //: And then back again.
@@ -185,13 +189,16 @@ struct WellHello {
     
     func printMessage() {
         let theName = name ?? "Dolly"
-        println("\(greeting) \(theName)")
+        print("\(greeting) \(theName)")
     }
 }
 
 let hello1:WellHello? = WellHello()
 
 //: You can unwrap an optional using the ? operator.
+// let hello2:WellHello? = .None
+
+// hello2?.printMessage()
 
 let theGreeting = hello1?.greeting
 
@@ -205,20 +212,20 @@ hello1?.printMessage()
 var hello2:WellHello? = Optional.None
 // hello2!.printMessage()
 
-println("Do we get here? - we shouldn't if the above line is uncommented as it causes a crash")
+print("Do we get here? - we shouldn't if the above line is uncommented as it causes a crash")
 
 hello2 = WellHello(name: "Louis", message: "It is nice to see you back here where you belong")
 
 //: Even though the following force unwraps the name property because hello2 is optionally unwrapped theName remains an optional.
 let theName = hello2?.name!
 
-println(theName)
-println("theName type: \(theName.dynamicType)")
+print(theName)
+print("theName type: \(theName.dynamicType)")
 
 //: You can force unwrap both.
 let theName2 = hello2!.name!
-println(theName2)
-println("theName2 type: \(theName2.dynamicType)")
+print(theName2)
+print("theName2 type: \(theName2.dynamicType)")
 
 //: You can add more than one optional unwrap in each if statement. See the printMessageFrom function.
 class GreetingsFrom {
@@ -233,13 +240,13 @@ class GreetingsFrom {
     func printMessageFrom() {
         if let theMessage = self.greetingMessage,
             let theName = theMessage.name {
-            println("\(theName) from \(country) says: \(theMessage.greeting)")
+            print("\(theName) from \(country) says: \(theMessage.greeting)")
         }
         else if let theMessage = self.greetingMessage {
-            println("\(country) says: \(theMessage.greeting)")
+            print("\(country) says: \(theMessage.greeting)")
         }
         else {
-            println("Greetings from \(country)")
+            print("Greetings from \(country)")
         }
     }
 }
@@ -250,7 +257,7 @@ let greetingsFromUKName = greetingsFromUK?.greetingMessage?.name
 
 //: Because either of ? results can be operating on an optional without a value the result is also an optional but an optional of the type of name: String.
 
-println("Type of greetingsFromUKName: \(greetingsFromUKName.dynamicType)")
+print("Type of greetingsFromUKName: \(greetingsFromUKName.dynamicType)")
 
 greetingsFromUK!.printMessageFrom()
 
@@ -260,6 +267,11 @@ greetingsFromUK!.printMessageFrom()
 //: * Enums and associated values
 //:   * Pattern matching on the enum and associated values (switch statements)
 //:   * The Result type
-//: ## @SheffieldSwift thanks you
+//: * The Swift 2 guard and defer statements.
+//: * The Swift 2 error handling.
+//: ## This playground was made for [@SheffieldSwift](https://twitter.com/SheffieldSwift)
+//: By [Kevin Meaney: @CocoaKevin](https://twitter.com/CocoaKevin)
+//:
+//: @CocoaKevin Creator of MovingImages at [Zukini](http://zukini.eu). A pre-release production.  
 //: ![Sheffield Swift](Swift.png)
 
