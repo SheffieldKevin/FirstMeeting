@@ -1,6 +1,6 @@
 //: ![Sheffield Swift](Swift.png)
 //: ## Written for @SheffieldSwift 19 May 2015
-//: [This playground intro to Swift at GitHub](https://github.com/SheffieldSwift/Materials/tree/master/19.05.15)
+//: [This playground introduction to Swift at GitHub](https://github.com/SheffieldSwift/Materials/tree/master/19.05.15)
 //: ### Swift is a powerful new language with some interesting features.
 //: I'll be discussing a few of those today
 //: * Swift is strictly typed with type inference
