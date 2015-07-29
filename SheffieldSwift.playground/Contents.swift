@@ -57,7 +57,7 @@ else {
 
 print(theString)
 
-//: ##### I would recommend that you always prefer let over var.
+//: ##### I would recommend that you prefer let over var.
 
 //: ### What is the difference between instances of Structs and Classes?
 
@@ -78,9 +78,13 @@ class Person {
 let someone = Person(firstName: "Shayleen")
 
 //: So what happens when we try to change the person's name:
+
+let anotherPerson = someone
 someone.firstName = "Katerina"
 // someone.lastName = "SemiSerious"
 someone.printName()
+
+anotherPerson.printName()
 
 //: ##### Hey! someone has been declared as a constant but we can change their name.
 
@@ -101,7 +105,7 @@ struct City {
 }
 
 let myCity = City(cityName:"Sheffield", population: 525000)
-// var myCity = City(name: "Sheffield", country:"UK", population: 525000)
+// var myCity = City(cityName:"Sheffield", population: 525000)
 // myCity.name = "Chesterfield"
 
 myCity.printCity()
@@ -148,6 +152,21 @@ print(optionalString)
 if let aString = optionalString {
     print(aString)
 }
+
+//: In Swift 2 you can also unwrap the optional using guard let.
+//: You can't use guard at the top level of a playground.
+
+func printOptional(optionalString optionalString: String?) -> Void {
+    guard let unwrappedString = optionalString else {
+        print("optionalString is Optional.None \(optionalString)")
+        return
+    }
+    
+    print(unwrappedString)
+}
+
+printOptional(optionalString: optionalString)
+// printOptional(optionalString: .None)
 
 //: After an optional value has been assigned a value you can set it back to nil.
 
@@ -260,6 +279,13 @@ let greetingsFromUKName = greetingsFromUK?.greetingMessage?.name
 print("Type of greetingsFromUKName: \(greetingsFromUKName.dynamicType)")
 
 greetingsFromUK!.printMessageFrom()
+
+//: ### Swift error handling and the ErrorType
+//: I am afraid is beyond the scope of this talk. I would recommend asking Luke Stringer @lukestringer90 to come give a talk one day on Swift 2 error handling.
+//: [Swift 2 error handling by @lukestringer90](https://github.com/SheffieldSwift/Materials/tree/master/21.07.15)
+
+//: If there is time we can touch on guard and defer.
+//: [@sketchyTech Deferring & delegating in Swift 2](http://sketchytech.blogspot.co.uk/2015/07/deferring-and-delegating-in-swift-2.html)
 
 //: ## What next
 //: There are a few more fundamental Swift topics which I'd like to cover but this is enough for today.
